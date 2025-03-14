@@ -1,0 +1,42 @@
+{
+  "name": "typescript-library-starter-pro-docs",
+  "description": "A simple, professional, and modern template for building and maintaining TypeScript libraries. This template integrates the best tools, workflows, and practices to help you focus on developing your library without worrying about setup.",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "prepare": "husky",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "keywords": [
+    "typescript",
+    "starter",
+    "library",
+    "template"
+  ],
+  "lint-staged": {
+    "*": "prettier -w --ignore-unknown",
+    "*.{js,ts}": "eslint --fix"
+  },
+  "author": "Francisco Vena <fvena32@gmail.com> (https://www.fvena.com)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.11.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "eslint": "^9.22.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "markdown-it-task-checkbox": "^1.0.6",
+    "personal-style-guide": "^0.5.5",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2",
+    "vitepress": "^1.6.3"
+  }
+}
