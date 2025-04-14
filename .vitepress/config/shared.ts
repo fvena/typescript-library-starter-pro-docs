@@ -3,6 +3,7 @@ import checkbox from "markdown-it-task-checkbox";
 import { search as esSearch } from "./es";
 
 export const shared = defineConfig({
+  base: "/typescript-library-starter-pro-docs/",
   cleanUrls: true,
   /* prettier-ignore */
   head: [
@@ -15,7 +16,7 @@ export const shared = defineConfig({
     ['meta', { content: 'https://vitepress.dev/vitepress-og.jpg', property: 'og:image' }],
     ['meta', { content: 'https://vitepress.dev/', property: 'og:url' }],
     ['script', {},
-      `if (window.location.pathname === '/' || window.location.pathname === '/typescript-library-template-pro/') {
+      `if (window.location.pathname === '/' || window.location.pathname === '/typescript-library-starter-pro-docs/') {
         window.location.href = '/en/';
       }`
     ]
