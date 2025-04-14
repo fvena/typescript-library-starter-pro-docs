@@ -16,8 +16,8 @@ export const shared = defineConfig({
     ['meta', { content: 'https://vitepress.dev/vitepress-og.jpg', property: 'og:image' }],
     ['meta', { content: 'https://vitepress.dev/', property: 'og:url' }],
     ['script', {},
-      `if (window.location.pathname === '/' || window.location.pathname === '/typescript-library-starter-pro-docs/') {
-        window.location.href = '/en/';
+      `if (window.location.pathname === '/typescript-library-starter-pro-docs/') {
+        window.location.href = '/typescript-library-starter-pro-docs/es/';
       }`
     ]
   ],
