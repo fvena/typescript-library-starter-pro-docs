@@ -146,10 +146,7 @@ export class DateFormatter {
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
     const year = date.getFullYear();
 
-    return this.format
-      .replace("DD", day)
-      .replace("MM", month)
-      .replace("YYYY", year);
+    return this.format.replace("DD", day).replace("MM", month).replace("YYYY", year);
   }
 
   /**
@@ -340,8 +337,7 @@ export default {
     [
       "@semantic-release/git",
       {
-        message:
-          "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+        message: "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
       },
     ],
     "@semantic-release/github",
@@ -639,9 +635,7 @@ class RegistroUsuarioForm {
       return true;
     }
 
-    const result = this.validators[fieldName].validate(
-      this.formData[fieldName],
-    );
+    const result = this.validators[fieldName].validate(this.formData[fieldName]);
     this.formErrors[fieldName] = result.errors;
 
     return result.valid;
@@ -947,10 +941,7 @@ Verifica que el string coincida con un patrón de expresión regular.
 
 ```typescript
 // Validar un código postal español
-const validator = new StringValidator().pattern(
-  /^[0-9]{5}$/,
-  "Código postal inválido",
-);
+const validator = new StringValidator().pattern(/^[0-9]{5}$/, "Código postal inválido");
 
 // Validar un nombre de usuario (letras, números y guiones bajos)
 const usernameValidator = new StringValidator().pattern(
@@ -987,8 +978,7 @@ async function generateJSDocForFile(filePath: string): Promise<string> {
     messages: [
       {
         role: "system",
-        content:
-          "Genera documentación JSDoc completa para el siguiente código TypeScript.",
+        content: "Genera documentación JSDoc completa para el siguiente código TypeScript.",
       },
       {
         role: "user",
@@ -1001,10 +991,7 @@ async function generateJSDocForFile(filePath: string): Promise<string> {
   return response.choices[0].message.content || "";
 }
 
-async function updateFileWithJSDoc(
-  filePath: string,
-  jsdoc: string,
-): Promise<void> {
+async function updateFileWithJSDoc(filePath: string, jsdoc: string): Promise<void> {
   let sourceCode = fs.readFileSync(filePath, "utf8");
 
   // Análisis simple para insertar la documentación
@@ -1014,15 +1001,11 @@ async function updateFileWithJSDoc(
   // Para cada bloque de documentación
   for (const docBlock of docBlocks) {
     // Extrae el nombre de la función/clase del bloque
-    const nameMatch = docBlock.match(
-      /@(class|function|method|interface)\s+(\w+)/,
-    );
+    const nameMatch = docBlock.match(/@(class|function|method|interface)\s+(\w+)/);
     if (nameMatch) {
       const [, type, name] = nameMatch;
       // Busca la declaración en el código original
-      const regex = new RegExp(
-        `(export\\s+)?(class|function|interface|const)\\s+${name}`,
-      );
+      const regex = new RegExp(`(export\\s+)?(class|function|interface|const)\\s+${name}`);
       const match = sourceCode.match(regex);
 
       if (match) {
@@ -1030,10 +1013,7 @@ async function updateFileWithJSDoc(
         if (position !== undefined) {
           // Inserta el bloque de documentación antes de la declaración
           sourceCode =
-            sourceCode.substring(0, position) +
-            docBlock +
-            "\n" +
-            sourceCode.substring(position);
+            sourceCode.substring(0, position) + docBlock + "\n" + sourceCode.substring(position);
         }
       }
     }
@@ -1046,9 +1026,7 @@ async function main() {
   const targetFile = process.argv[2];
 
   if (!targetFile) {
-    console.error(
-      "Por favor, especifica un archivo para generar documentación.",
-    );
+    console.error("Por favor, especifica un archivo para generar documentación.");
     process.exit(1);
   }
 
@@ -1189,4 +1167,4 @@ Al combinar las capacidades de la IA con la experiencia humana, puedes crear doc
 
 ## Siguientes pasos
 
-Una vez que hayas configurado procesos de documentación automatizados con IA, el siguiente paso lógico es establecer una guía clara para los contribuidores de tu proyecto. Consulta [Guía de contribución](/contributing/guide.md) para aprender cómo crear directrices efectivas para colaboradores externos.
+Una vez que hayas configurado procesos de documentación automatizados con IA, el siguiente paso lógico es establecer una guía clara para los contribuidores de tu proyecto. Consulta [Guía de contribución](/es/guide/contributing/guide.md) para aprender cómo crear directrices efectivas para colaboradores externos.

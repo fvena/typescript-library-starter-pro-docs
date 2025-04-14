@@ -6,6 +6,7 @@ La plantilla TypeScript Library Template Pro utiliza un desarrollo basado en tru
 
 - La rama `main` siempre está lista para publicación
 - Los cambios se integran frecuentemente
+- Todo lo que se integra en `main` debe pasar por los tests y la build
 - La calidad se mantiene mediante pruebas automatizadas
 - Las versiones se generan automáticamente basándose en los mensajes de commit
 
@@ -14,8 +15,9 @@ La plantilla TypeScript Library Template Pro utiliza un desarrollo basado en tru
 ### Para cambios pequeños
 
 1. Trabaja directamente en la rama `main`
-2. Realiza commits siguiendo las [convenciones de commit](/development/commit-conventions.md)
-3. Cuando hagas push, las GitHub Actions ejecutarán las pruebas y, si los cambios lo requieren, publicarán una nueva versión
+2. Realiza commits siguiendo las [convenciones de commit](/es/guide/development/commit-conventions.md)
+3. Cuando hagas push, un hook pre-push ejecutará los tests, probará la build y el tamaño de la librería. Si todo está bien, se subirán los cambios al repositorio.
+4. Las GitHub Actions ejecutarán las pruebas y, si los cambios lo requieren, publicarán una nueva versión.
 
 ### Para cambios más grandes
 

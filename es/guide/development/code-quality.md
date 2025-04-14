@@ -151,6 +151,10 @@ Estas herramientas ejecutan verificaciones de código antes de cada commit.
 
 Además de las herramientas incluidas en la plantilla, considera integrar estas herramientas adicionales para mejorar aún más la calidad del código:
 
+### Code Spell Checker
+
+[Code Spell Checker](https://github.com/streetsidesoftware/cspell) es una herramienta que verifica el uso de palabras correctas en el código.
+
 ### SonarQube / SonarCloud
 
 SonarQube (o su versión en la nube, SonarCloud) proporciona análisis estático avanzado que puede identificar:

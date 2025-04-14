@@ -13,6 +13,12 @@ Si prefieres empezar con algo más simple, aquí hay un ejemplo minimalista que 
 
 A TypeScript library for [purpose].
 
+[![SemVer](https://img.shields.io/npm/v/my-library)](https://www.npmjs.com/package/my-library)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/my-library)](https://bundlephobia.com/package/my-library)
+[![Build Status](https://github.com/fvena/my-library/workflows/CI%2FCD/badge.svg)](https://github.com/fvena/my-library/actions)
+[![Status](https://img.shields.io/badge/status-active-success.svg)](https://github.com/fvena/my-library/actions)
+[![Live Docs](https://img.shields.io/badge/docs-online-success.svg)](https://github.com/fvena/my-library#readme)
+
 ## Installation
 
 ```bash

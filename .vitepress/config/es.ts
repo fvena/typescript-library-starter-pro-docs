@@ -1,4 +1,5 @@
-import { type DefaultTheme, defineConfig } from "vitepress";
+import type { DefaultTheme } from "vitepress";
+import { defineConfig } from "vitepress";
 
 export const es = defineConfig({
   description:
@@ -66,12 +67,14 @@ function sidebarGuide(): DefaultTheme.SidebarItem[] {
           text: "Información del proyecto",
         },
         { link: "/getting-started/readme", text: "README" },
+        { link: "/getting-started/vibe-coding", text: "Vibe Coding" },
         { link: "/getting-started/tokens", text: "Tokens" },
         { link: "/getting-started/github-pages", text: "GitHub Pages" },
         {
           link: "/getting-started/branch-protection",
           text: "Protección de ramas",
         },
+        { link: "/getting-started/first-commit", text: "Primer commit y release" },
       ],
       text: "Primeros Pasos",
     },
@@ -81,6 +84,7 @@ function sidebarGuide(): DefaultTheme.SidebarItem[] {
         { link: "/development/scripts", text: "Scripts" },
         { link: "/development/workflow", text: "Flujo de trabajo" },
         { link: "/development/commit-conventions", text: "Commits" },
+        { link: "/development/build", text: "Construir la librería" },
         { link: "/development/testing", text: "Testing" },
         { link: "/development/code-quality", text: "Calidad de código" },
         { link: "/development/documentation", text: "Documentación" },
@@ -142,8 +146,7 @@ export const search: DefaultTheme.AlgoliaSearchOptions["locales"] = {
         noResultsScreen: {
           noResultsText: "No fue posible encontrar resultados",
           reportMissingResultsLinkText: "Click para enviar feedback",
-          reportMissingResultsText:
-            "Deberian haber resultados para esa consulta?",
+          reportMissingResultsText: "Deberian haber resultados para esa consulta?",
           suggestedQueryText: "Puede intentar una nueva búsqueda",
         },
         searchBox: {

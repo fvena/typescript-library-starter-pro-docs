@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Comenzar
-      link: /getting-started/create-repository
+      link: /es/guide/getting-started/create-repository
     - theme: alt
       text: Ver en GitHub
       link: https://github.com/fvena/typescript-library-template-pro
@@ -91,11 +91,11 @@ npm run dev
 
 ## 📖 Explora la documentación
 
-- [Crear Repositorio](/getting-started/create-repository) - Primeros pasos para configurar tu proyecto
-- [Flujo de Trabajo](/development/workflow) - Guía del flujo de desarrollo recomendado
-- [Testing](/development/testing) - Cómo implementar pruebas efectivas
-- [Publicación](/publishing/release-process) - Proceso de publicación automática
-- [Desarrollo con IA](/ai-assisted/design) - Cómo integrar IA en tu flujo de desarrollo
+- [Crear Repositorio](/es/guide/getting-started/create-repository) - Primeros pasos para configurar tu proyecto
+- [Flujo de Trabajo](/es/guide/development/workflow) - Guía del flujo de desarrollo recomendado
+- [Testing](/es/guide/development/testing) - Cómo implementar pruebas efectivas
+- [Publicación](/es/guide/development/release-process) - Proceso de publicación automática
+- [Desarrollo con IA](/es/guide/ai-assisted/design) - Cómo integrar IA en tu flujo de desarrollo
 
 ## 💼 Para quién es esta plantilla
 
@@ -110,8 +110,8 @@ Esta plantilla está diseñada para:
 
 ¿Encontraste un error o tienes una sugerencia? ¡Las contribuciones son bienvenidas!
 
-- [Guía de contribución](/contributing/guide)
-- [Código de conducta](/contributing/code-of-conduct)
-- [Crear Pull Requests](/contributing/pull-requests)
+- [Guía de contribución](/es/guide/contributing/guide)
+- [Código de conducta](/es/guide/contributing/code-of-conduct)
+- [Crear Pull Requests](/es/guide/contributing/pull-requests)
 
 </div>

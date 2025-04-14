@@ -87,4 +87,4 @@ Si todos estos comandos se ejecutan sin errores, estás listo para comenzar a pe
 
 ## Siguientes pasos
 
-Una vez que hayas creado y clonado tu repositorio, el siguiente paso es actualizar la información del proyecto para reflejar los detalles de tu biblioteca. Consulta [Actualizar información del proyecto](/getting-started/update-project-info.md) para obtener instrucciones detalladas.
+Una vez que hayas creado y clonado tu repositorio, el siguiente paso es actualizar la información del proyecto para reflejar los detalles de tu biblioteca. Consulta [Actualizar información del proyecto](/es/guide/getting-started/update-project-info) para obtener instrucciones detalladas.

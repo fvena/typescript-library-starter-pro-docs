@@ -1781,7 +1781,7 @@ Si necesitas crear una release manualmente:
 
 Si tu pregunta no está respondida aquí, considera estas opciones:
 
-1. Revisa la [documentación completa](/index.md) para encontrar información más detallada.
+1. Revisa la [documentación completa](/) para encontrar información más detallada.
 2. Abre un [issue](https://github.com/fvena/typescript-library-template-pro/issues) en el repositorio con tu pregunta.
 3. Consulta la [documentación oficial](https://www.typescriptlang.org/docs/) de TypeScript para dudas específicas del lenguaje.
 4. Para preguntas sobre herramientas específicas, revisa su documentación oficial:

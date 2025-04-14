@@ -56,12 +56,7 @@ Para optimizar Cursor para tu biblioteca TypeScript:
    ```json
    // .cursor/context.json
    {
-     "importantFiles": [
-       "src/index.ts",
-       "package.json",
-       "tsconfig.json",
-       "README.md"
-     ],
+     "importantFiles": ["src/index.ts", "package.json", "tsconfig.json", "README.md"],
      "codebaseContext": "Esta es una biblioteca TypeScript que sigue la estructura de TypeScript Library Template Pro. Utiliza tsup para la compilación, Vitest para testing, y semantic-release para publicación automática."
    }
    ```
@@ -326,12 +321,7 @@ export class TypeScriptLibraryAgent {
 
   private loadProjectContext() {
     // Cargar archivos importantes para proporcionar contexto
-    const files = [
-      "package.json",
-      "tsconfig.json",
-      "src/index.ts",
-      "README.md",
-    ];
+    const files = ["package.json", "tsconfig.json", "src/index.ts", "README.md"];
 
     let context = "Project files:\n\n";
 
@@ -510,11 +500,7 @@ Crea archivos de configuración compartidos para todos los miembros del equipo:
 ```json
 // .vscode/extensions.json
 {
-  "recommendations": [
-    "github.copilot",
-    "github.copilot-chat",
-    "continue.continue"
-  ]
+  "recommendations": ["github.copilot", "github.copilot-chat", "continue.continue"]
 }
 ```
 
@@ -606,4 +592,4 @@ La clave para aprovechar al máximo los agentes de IA es combinar sus capacidade
 
 ## Siguientes pasos
 
-Una vez que hayas configurado agentes para asistir en el desarrollo, el siguiente paso lógico es explorar cómo pueden ayudar específicamente con la documentación. Consulta [Documentación automática](/ai-assisted/documentation.md) para aprender a utilizar IA para generar y mantener documentación de alta calidad para tu biblioteca TypeScript.
+Una vez que hayas configurado agentes para asistir en el desarrollo, el siguiente paso lógico es explorar cómo pueden ayudar específicamente con la documentación. Consulta [Documentación automática](/es/guide/ai-assisted/documentation) para aprender a utilizar IA para generar y mantener documentación de alta calidad para tu biblioteca TypeScript.

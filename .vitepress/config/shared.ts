@@ -4,11 +4,6 @@ import { search as esSearch } from "./es";
 
 export const shared = defineConfig({
   cleanUrls: true,
-
-  // rewrites: {
-  //   'en/:rest*': ':rest*'
-  // },
-
   /* prettier-ignore */
   head: [
     ['link', { href: '/logo.png', rel: 'icon', type: 'image/png' }],
@@ -25,20 +20,29 @@ export const shared = defineConfig({
       }`
     ]
   ],
+
+  // rewrites: {
+  //   'en/:rest*': ':rest*'
+  // },
+
+  ignoreDeadLinks: true,
   markdown: {
     codeTransformers: [
       // We use `[!!code` in demo to prevent transformation, here we revert it back.
       {
         postprocess(code) {
-          return code.replaceAll('[!!code', "[!code");
+          return code.replaceAll("[!!code", "[!code");
         },
       },
     ],
     config(md) {
       // TODO: remove when https://github.com/vuejs/vitepress/issues/4431 is fixed
-      const fence = md.renderer.rules.fence!;
+      const fence = md.renderer.rules.fence;
+      if (!fence) {
+        throw new Error("Fence renderer rule not found");
+      }
       md.renderer.rules.fence = function (tokens, index, options, env, self) {
-        const { localeIndex = "root" } = env;
+        const { localeIndex = "root" } = env as { localeIndex?: string };
         const codeCopyButtonTitle = (() => {
           switch (localeIndex) {
             case "es": {
@@ -54,7 +58,7 @@ export const shared = defineConfig({
           `<button title="${codeCopyButtonTitle}" class="copy"></button>`,
         );
       };
-      md.use(checkbox, {
+      md.use(checkbox as never, {
         disabled: true,
         liClass: "task-list-item",
         ulClass: "task-list",
@@ -73,7 +77,7 @@ export const shared = defineConfig({
 
   themeConfig: {
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} Francisco Vena`,
+      copyright: `Copyright © ${String(new Date().getFullYear())} Francisco Vena`,
       message: "Released under the MIT License.",
     },
 

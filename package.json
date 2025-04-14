@@ -30,13 +30,15 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
-    "eslint": "^9.22.0",
+    "eslint": "^9.24.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.5.0",
+    "lint-staged": "^15.5.1",
     "markdown-it-task-checkbox": "^1.0.6",
-    "personal-style-guide": "^0.5.5",
+    "personal-style-guide": "^0.6.0",
     "prettier": "^3.5.3",
-    "typescript": "^5.8.2",
+    "size-limit": "^11.2.0",
+    "size-limit-preset-node-lib": "^0.3.0",
+    "typescript": "^5.8.3",
     "vitepress": "^1.6.3"
   }
 }

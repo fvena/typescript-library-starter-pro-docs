@@ -422,7 +422,7 @@ Para solicitar nuevas funcionalidades:
 
 Al contribuir a este proyecto:
 
-1. Aceptas que tus contribuciones serán licenciadas bajo la misma [licencia MIT](../LICENSE) que cubre el proyecto.
+1. Aceptas que tus contribuciones serán licenciadas bajo la misma licencia MIT que cubre el proyecto.
 2. Confirmas que tienes los derechos necesarios sobre tu contribución y puedes licenciarla bajo estos términos.
 3. Entiendes que tu contribución estará disponible públicamente y podrá ser utilizada por otros según los términos de la licencia.
 

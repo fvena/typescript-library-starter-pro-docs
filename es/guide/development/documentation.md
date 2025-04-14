@@ -42,7 +42,3 @@ Actualiza el valor de `base` con el nombre de tu repositorio para que GitHub Pag
 | `npm run docs:dev`     | Inicia servidor de desarrollo local      |
 | `npm run docs:build`   | Compila la documentación para producción |
 | `npm run docs:preview` | Previsualiza la documentación compilada  |
-
-## Más información
-
-Para obtener información detallada sobre cómo crear contenido avanzado, personalizar el tema, incorporar componentes interactivos y desplegar tu documentación, consulta la [referencia sobre documentación](/referencia/documentacion-avanzada.md).

@@ -362,8 +362,7 @@ const userTransformer = transform<SourceUser, DestUser>({
   fullName: (src) => `${src.firstName} ${src.lastName}`,
   contactInfo: {
     email: (src) => src.email,
-    address: (src) =>
-      `${src.address.street}, ${src.address.city}, ${src.address.country}`,
+    address: (src) => `${src.address.street}, ${src.address.city}, ${src.address.country}`,
   },
   age: (src) => calculateAge(src.birthDate),
   region: (src) => getRegionFromCountry(src.address.country),
@@ -573,10 +572,7 @@ export class LRUStrategy implements CacheStrategy {
 
 // Main cache implementation
 export class InMemoryCache<T = any> implements Cache<T> {
-  private readonly storage: Map<
-    string,
-    { value: T; expires: number; tags: string[] }
-  > = new Map();
+  private readonly storage: Map<string, { value: T; expires: number; tags: string[] }> = new Map();
   private readonly strategy: CacheStrategy;
 
   constructor(private readonly config: CacheConfig = {}) {
@@ -674,4 +670,4 @@ La combinación de la creatividad humana con las capacidades analíticas de la I
 
 ## Siguientes pasos
 
-Una vez que hayas definido y diseñado tu biblioteca, el siguiente paso natural es la implementación del código. Consulta [Codificación con LLM](/ai-assisted/coding.md) para aprender cómo la IA puede ayudarte en el proceso de desarrollo.
+Una vez que hayas definido y diseñado tu biblioteca, el siguiente paso natural es la implementación del código. Consulta [Codificación con LLM](/es/guide/ai-assisted/coding.md) para aprender cómo la IA puede ayudarte en el proceso de desarrollo.

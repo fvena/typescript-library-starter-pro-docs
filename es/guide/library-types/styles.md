@@ -300,10 +300,7 @@ Object.entries(colors).forEach(([name, value]) => {
 });
 
 // Escribir markdown
-fs.writeFileSync(
-  path.join(__dirname, "../docs/styleguide/colors.md"),
-  markdown,
-);
+fs.writeFileSync(path.join(__dirname, "../docs/styleguide/colors.md"), markdown);
 
 console.log("Color styleguide generated successfully!");
 ```
@@ -381,9 +378,7 @@ export function setupTheme(initialTheme: ThemeMode = "light") {
 
 // Utilidad para detectar preferencia del sistema
 export function detectSystemTheme(): ThemeMode {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 ```
 

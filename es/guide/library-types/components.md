@@ -25,7 +25,7 @@ npm install --save-dev vite @vitejs/plugin-vue typescript rollup-plugin-vue
 
 Una estructura organizada facilita el mantenimiento de la biblioteca:
 
-```
+```bash
 src/
   ├── components/            # Componentes individuales
   │   ├── Button/
@@ -150,14 +150,12 @@ export default defineComponent({
     variant: {
       type: String as PropType<ButtonVariant>,
       default: "primary",
-      validator: (value: string) =>
-        ["primary", "secondary", "danger", "ghost"].includes(value),
+      validator: (value: string) => ["primary", "secondary", "danger", "ghost"].includes(value),
     },
     size: {
       type: String as PropType<ButtonSize>,
       default: "medium",
-      validator: (value: string) =>
-        ["small", "medium", "large"].includes(value),
+      validator: (value: string) => ["small", "medium", "large"].includes(value),
     },
     disabled: {
       type: Boolean,
@@ -249,7 +247,7 @@ export default defineComponent({
 </style>
 ```
 
-### Usando la API <script setup>
+### Usando la API `<script setup>`
 
 Para componentes más concisos, puedes usar la sintaxis `<script setup>` de Vue 3:
 
@@ -716,9 +714,7 @@ Los composables son una parte fundamental de la Composition API de Vue, permitie
 import { ref, Ref } from "vue";
 
 export function useToggle(initialValue: boolean | Ref<boolean> = false) {
-  const value = ref(
-    initialValue instanceof Ref ? initialValue.value : initialValue,
-  );
+  const value = ref(initialValue instanceof Ref ? initialValue.value : initialValue);
 
   const toggle = () => {
     if (initialValue instanceof Ref) {
@@ -869,17 +865,13 @@ export interface PluginOptions {
   prefix?: string;
 }
 
-export const createVueComponentsPlugin = (
-  options: PluginOptions = {},
-): Plugin => {
+export const createVueComponentsPlugin = (options: PluginOptions = {}): Plugin => {
   return {
     install(app: App) {
       // Registrar componentes
       Object.entries(components).forEach(([componentName, component]) => {
         if (componentName !== "default") {
-          const name = options.prefix
-            ? `${options.prefix}${componentName}`
-            : componentName;
+          const name = options.prefix ? `${options.prefix}${componentName}` : componentName;
           app.component(name, component);
         }
       });
@@ -1058,11 +1050,7 @@ Un ejemplo completo de un componente Dropdown con TypeScript y Vue:
 ```vue
 <!-- src/components/Dropdown/Dropdown.vue -->
 <template>
-  <div
-    class="my-dropdown"
-    :class="{ 'my-dropdown--open': isOpen }"
-    v-click-outside="close"
-  >
+  <div class="my-dropdown" :class="{ 'my-dropdown--open': isOpen }" v-click-outside="close">
     <button
       class="my-dropdown__trigger"
       :aria-expanded="isOpen.toString()"
@@ -1070,12 +1058,7 @@ Un ejemplo completo de un componente Dropdown con TypeScript y Vue:
       @click="toggle"
     >
       <slot name="trigger">{{ label }}</slot>
-      <span
-        class="my-dropdown__icon"
-        :class="{ 'my-dropdown__icon--open': isOpen }"
-      >
-        ▼
-      </span>
+      <span class="my-dropdown__icon" :class="{ 'my-dropdown__icon--open': isOpen }"> ▼ </span>
     </button>
 
     <transition name="dropdown">
@@ -1441,9 +1424,7 @@ const props = defineProps<{
   initialTab?: number;
 }>();
 
-const { tabs, registerTab, setActiveTab, isTabActive, activeTab } = useTabs(
-  props.initialTab || 0,
-);
+const { tabs, registerTab, setActiveTab, isTabActive, activeTab } = useTabs(props.initialTab || 0);
 
 // Proporcionar valores para los componentes TabPanel
 provide("tabs", {
@@ -1672,11 +1653,7 @@ module.exports = {
       },
       {
         title: "Composables",
-        children: [
-          "/composables/use-toggle",
-          "/composables/use-form",
-          "/composables/use-tabs",
-        ],
+        children: ["/composables/use-toggle", "/composables/use-form", "/composables/use-tabs"],
       },
     ],
   },

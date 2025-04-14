@@ -397,4 +397,4 @@ Al combinar las capacidades de la IA con la experiencia humana, puedes crear un 
 
 ## Siguientes pasos
 
-Una vez que hayas mejorado tus procesos de testing con IA, el siguiente paso lógico es configurar agentes de IA especializados para automatizar aún más estos procesos. Consulta [Configuración de agentes](/ai-assisted/agents.md) para aprender a configurar asistentes de IA que pueden integrarse en tu flujo de trabajo de desarrollo.
+Una vez que hayas mejorado tus procesos de testing con IA, el siguiente paso lógico es configurar agentes de IA especializados para automatizar aún más estos procesos. Consulta [Configuración de agentes](/es/guide/ai-assisted/agents.md) para aprender a configurar asistentes de IA que pueden integrarse en tu flujo de trabajo de desarrollo.

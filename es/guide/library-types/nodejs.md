@@ -205,10 +205,7 @@ import { readFile } from "fs/promises";
 import { validate } from "./validator";
 import type { Options, Result } from "../types";
 
-export async function processFile(
-  path: string,
-  options: Options = {},
-): Promise<Result> {
+export async function processFile(path: string, options: Options = {}): Promise<Result> {
   try {
     const content = await readFile(path, "utf-8");
     return processContent(content, options);
@@ -276,10 +273,7 @@ Para operaciones con archivos, normaliza y valida las rutas:
 ```typescript
 import { resolve, normalize } from "path";
 
-export function readSafeFile(
-  basePath: string,
-  relativePath: string,
-): Promise<string> {
+export function readSafeFile(basePath: string, relativePath: string): Promise<string> {
   // Prevenir path traversal
   const normalizedPath = normalize(relativePath);
   if (normalizedPath.startsWith("..")) {
@@ -527,10 +521,7 @@ export type { JsonOptions, FilePattern } from "./types";
 import { readFile, writeFile } from "fs/promises";
 import type { JsonOptions } from "../types";
 
-export async function readJsonSafe<T>(
-  path: string,
-  options: JsonOptions = {},
-): Promise<T> {
+export async function readJsonSafe<T>(path: string, options: JsonOptions = {}): Promise<T> {
   try {
     const content = await readFile(path, "utf-8");
     return JSON.parse(content) as T;
@@ -639,7 +630,3 @@ export class BatchProcessor<T> {
 Desarrollar bibliotecas Node.js con TypeScript ofrece numerosas ventajas, como tipado estático, mejor autocompletado y documentación integrada. La plantilla TypeScript Library Template Pro proporciona una base sólida con configuraciones optimizadas para Node.js, pero es importante entender y personalizar estas configuraciones según las necesidades específicas de tu biblioteca.
 
 Al seguir las recomendaciones y mejores prácticas detalladas en este documento, puedes crear bibliotecas Node.js robustas, performantes y fáciles de mantener que proporcionarán una excelente experiencia tanto para los desarrolladores que las utilicen como para los que las mantengan.
-
-## Siguientes pasos
-
-Si estás desarrollando una biblioteca que también necesita funcionar en el navegador, consulta [Librerías para navegador](/library-types/browser.md) para obtener información sobre cómo configurar y optimizar tu biblioteca para entornos de navegador.

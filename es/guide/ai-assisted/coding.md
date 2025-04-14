@@ -292,21 +292,14 @@ export type ValidatorOptions = {
 
 // Base validator class
 export abstract class Validator<T> {
-  protected validations: Array<
-    (value: any, options?: ValidatorOptions) => ValidationError | null
-  > = [];
+  protected validations: Array<(value: any, options?: ValidatorOptions) => ValidationError | null> =
+    [];
   protected asyncValidations: Array<
     (value: any, options?: ValidatorOptions) => Promise<ValidationError | null>
   > = [];
 
-  abstract validate(
-    value: unknown,
-    options?: ValidatorOptions,
-  ): ValidationResult;
-  abstract validateAsync(
-    value: unknown,
-    options?: ValidatorOptions,
-  ): Promise<ValidationResult>;
+  abstract validate(value: unknown, options?: ValidatorOptions): ValidationResult;
+  abstract validateAsync(value: unknown, options?: ValidatorOptions): Promise<ValidationResult>;
 
   // Method to validate and cast to the correct type if valid
   public parse(value: unknown, options?: ValidatorOptions): T {
@@ -318,10 +311,7 @@ export abstract class Validator<T> {
   }
 
   // Method to validate asynchronously and cast
-  public async parseAsync(
-    value: unknown,
-    options?: ValidatorOptions,
-  ): Promise<T> {
+  public async parseAsync(value: unknown, options?: ValidatorOptions): Promise<T> {
     const result = await this.validateAsync(value, options);
     if (!result.valid) {
       throw new ValidationError("Validation failed", result.errors);
@@ -330,11 +320,7 @@ export abstract class Validator<T> {
   }
 
   // Helper to create a new validation error
-  protected createError(
-    path: string,
-    message: string,
-    code: string,
-  ): ValidationError {
+  protected createError(path: string, message: string, code: string): ValidationError {
     return { path, message, code };
   }
 }
@@ -384,11 +370,7 @@ export class StringValidator extends Validator<string> {
   pattern(regex: RegExp, message?: string): this {
     this.validations.push((value, _options) => {
       if (typeof value === "string" && !regex.test(value)) {
-        return this.createError(
-          "",
-          message || `Does not match pattern ${regex}`,
-          "pattern",
-        );
+        return this.createError("", message || `Does not match pattern ${regex}`, "pattern");
       }
       return null;
     });
@@ -403,11 +385,7 @@ export class StringValidator extends Validator<string> {
   }
 
   // Custom validation
-  custom(
-    validator: (value: string) => boolean,
-    message: string,
-    code = "custom",
-  ): this {
+  custom(validator: (value: string) => boolean, message: string, code = "custom"): this {
     this.validations.push((value, _options) => {
       if (typeof value === "string" && !validator(value)) {
         return this.createError("", message, code);
@@ -453,10 +431,7 @@ export class StringValidator extends Validator<string> {
   }
 
   // Implementation of async validation
-  async validateAsync(
-    value: unknown,
-    options: ValidatorOptions = {},
-  ): Promise<ValidationResult> {
+  async validateAsync(value: unknown, options: ValidatorOptions = {}): Promise<ValidationResult> {
     // First do sync validations
     const syncResult = this.validate(value, options);
     if (options.abortEarly && !syncResult.valid) {
@@ -486,9 +461,7 @@ export class StringValidator extends Validator<string> {
 // Number validator (similar implementation...)
 
 // Object validator
-export class ObjectValidator<
-  T extends Record<string, any>,
-> extends Validator<T> {
+export class ObjectValidator<T extends Record<string, any>> extends Validator<T> {
   private shape: Record<string, Validator<any>>;
 
   constructor(shape: Record<string, Validator<any>>) {
@@ -555,10 +528,7 @@ export class ObjectValidator<
   }
 
   // Implementation of async validation for objects
-  async validateAsync(
-    value: unknown,
-    options: ValidatorOptions = {},
-  ): Promise<ValidationResult> {
+  async validateAsync(value: unknown, options: ValidatorOptions = {}): Promise<ValidationResult> {
     // Similar to validate but with async validators
     // Implementation...
   }
@@ -637,14 +607,7 @@ Necesito implementar un cliente HTTP tipado para mi biblioteca TypeScript. Quier
 
 ```typescript
 // Types for the HTTP client
-export type HttpMethod =
-  | "GET"
-  | "POST"
-  | "PUT"
-  | "DELETE"
-  | "PATCH"
-  | "HEAD"
-  | "OPTIONS";
+export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "OPTIONS";
 
 export interface RequestOptions<D = any> {
   method?: HttpMethod;
@@ -700,16 +663,12 @@ export class HttpError extends Error {
 
 // Interceptor types
 export interface RequestInterceptor {
-  onFulfilled?: (
-    config: RequestOptions,
-  ) => RequestOptions | Promise<RequestOptions>;
+  onFulfilled?: (config: RequestOptions) => RequestOptions | Promise<RequestOptions>;
   onRejected?: (error: any) => any;
 }
 
 export interface ResponseInterceptor {
-  onFulfilled?: <T>(
-    response: HttpResponse<T>,
-  ) => HttpResponse<T> | Promise<HttpResponse<T>>;
+  onFulfilled?: <T>(response: HttpResponse<T>) => HttpResponse<T> | Promise<HttpResponse<T>>;
   onRejected?: (error: HttpError) => any;
 }
 
@@ -778,20 +737,13 @@ export class HttpClient {
 
     const queryParams = Object.entries(params)
       .filter(([_, value]) => value != null)
-      .map(
-        ([key, value]) =>
-          `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`,
-      )
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`)
       .join("&");
 
-    return queryParams
-      ? `${fullURL}${fullURL.includes("?") ? "&" : "?"}${queryParams}`
-      : fullURL;
+    return queryParams ? `${fullURL}${fullURL.includes("?") ? "&" : "?"}${queryParams}` : fullURL;
   }
 
-  private async applyRequestInterceptors(
-    config: RequestOptions,
-  ): Promise<RequestOptions> {
+  private async applyRequestInterceptors(config: RequestOptions): Promise<RequestOptions> {
     let currentConfig = { ...config };
 
     for (const interceptor of this.requestInterceptors) {
@@ -810,9 +762,7 @@ export class HttpClient {
     return currentConfig;
   }
 
-  private async applyResponseInterceptors<T>(
-    response: HttpResponse<T>,
-  ): Promise<HttpResponse<T>> {
+  private async applyResponseInterceptors<T>(response: HttpResponse<T>): Promise<HttpResponse<T>> {
     let currentResponse = response;
 
     for (const interceptor of this.responseInterceptors) {
@@ -833,10 +783,7 @@ export class HttpClient {
 
   private handleError(error: any, response?: HttpResponse): never {
     if (response) {
-      throw new HttpError(
-        `Request failed with status ${response.status}`,
-        response,
-      );
+      throw new HttpError(`Request failed with status ${response.status}`, response);
     }
     throw error;
   }
@@ -872,9 +819,7 @@ export class HttpClient {
 
     // Add body for non-GET requests
     if (method !== "GET" && method !== "HEAD" && data !== undefined) {
-      fetchOptions.body = headers?.["Content-Type"]?.includes(
-        "application/json",
-      )
+      fetchOptions.body = headers?.["Content-Type"]?.includes("application/json")
         ? JSON.stringify(data)
         : (data as any);
     }
@@ -894,10 +839,7 @@ export class HttpClient {
         const response = await fetch(fullURL, fetchOptions);
         if (timeoutId) clearTimeout(timeoutId);
 
-        const responseData = await this.parseResponse<T>(
-          response,
-          config.responseType,
-        );
+        const responseData = await this.parseResponse<T>(response, config.responseType);
 
         const httpResponse: HttpResponse<T> = {
           data: responseData,
@@ -913,10 +855,7 @@ export class HttpClient {
           if (retry && retryCount < retry.count) {
             const shouldRetry = retry.shouldRetry
               ? retry.shouldRetry(
-                  new HttpError(
-                    `Request failed with status ${response.status}`,
-                    httpResponse,
-                  ),
+                  new HttpError(`Request failed with status ${response.status}`, httpResponse),
                 )
               : response.status >= 500 || response.status === 429;
 
@@ -1015,10 +954,7 @@ export class HttpClient {
   }
 
   // Factory method to create a cancellable request
-  createCancellable<T = any, D = any>(
-    url: string,
-    options: RequestOptions<D> = {},
-  ) {
+  createCancellable<T = any, D = any>(url: string, options: RequestOptions<D> = {}) {
     const controller = new AbortController();
 
     const promise = this.request<T, D>(url, {
@@ -1418,4 +1354,4 @@ La combinación de experiencia humana con asistentes LLM representa un nuevo par
 
 ## Siguientes pasos
 
-Una vez que hayas implementado tu biblioteca con la ayuda de LLMs, el siguiente paso natural es probar y depurar tu código. Consulta [Testing y depuración](/ai-assisted/testing.md) para aprender cómo la IA puede ayudarte en el proceso de garantizar la calidad de tu biblioteca.
+Una vez que hayas implementado tu biblioteca con la ayuda de LLMs, el siguiente paso natural es probar y depurar tu código. Consulta [Testing y depuración](/es/guide/ai-assisted/testing.md) para aprender cómo la IA puede ayudarte en el proceso de garantizar la calidad de tu biblioteca.
